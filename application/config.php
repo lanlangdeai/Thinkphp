@@ -23,14 +23,18 @@ return [
     // 应用模式状态
     'app_status'             => '',
     // 是否支持多模块
-    'app_multi_module'       => true,
+    'app_multi_module'       => false,
     // 入口自动绑定模块
     'auto_bind_module'       => false,
     // 注册的根命名空间
-    'root_namespace'         => [],
+    'root_namespace'         => [
+                                    'my'=>'../application/extend/my/',
+                                    'org'=>'../application/extend/org/'
+
+                                    ],
     // 扩展函数文件
     'extra_file_list'        => [THINK_PATH . 'helper' . EXT],
-    // 默认输出类型
+    // 默认输出类型    json  html
     'default_return_type'    => 'html',
     // 默认AJAX 数据返回格式,可选json xml ...
     'default_ajax_return'    => 'json',
@@ -166,9 +170,17 @@ return [
     // +----------------------------------------------------------------------
     // | Trace设置 开启 app_trace 后 有效
     // +----------------------------------------------------------------------
+    // 'trace'                  => [
+    //     // 内置Html Console 支持扩展
+    //     'type' => 'Html',
+    // ], 
     'trace'                  => [
         // 内置Html Console 支持扩展
-        'type' => 'Html',
+        'type' => 'socket',
+        'host' => 'slog.thinkphp.cn',
+        'force_client_ids'    => ['slog_ea7364'],
+        //限制允许读取日志的client_id
+        'allow_client_ids'    => ['slog_ea7364'],
     ],
 
     // +----------------------------------------------------------------------
